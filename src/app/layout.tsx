@@ -21,6 +21,15 @@ const fredoka = Fredoka({
 export const metadata: Metadata = {
   title: "Tunas Binar — Pusat Layanan Terapi & Boarding Anak",
   description: "Tunas Binar adalah pusat layanan terapi dan boarding anak di Malang. Kami mendampingi setiap anak dengan pendekatan hangat, terarah, dan sesuai kebutuhan.",
+  icons: {
+    icon: [
+      { url: "/logo_transparent.png", type: "image/png" },
+    ],
+    shortcut: ["/logo_transparent.png"],
+    apple: [
+      { url: "/logo_transparent.png" },
+    ],
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
