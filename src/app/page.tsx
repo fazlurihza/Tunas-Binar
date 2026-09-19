@@ -645,14 +645,28 @@ export default function Home() {
 
                   <div className="flex items-start gap-4">
                     <div className="w-11 h-11 bg-gray-800 rounded-full flex items-center justify-center shrink-0">
-                      <svg className="w-5 h-5 text-red-400" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+                      <svg className="w-5 h-5 text-pink-400" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
                         <rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/>
                       </svg>
                     </div>
                     <div>
-                      <h4 className="font-bold text-gray-200 text-sm mb-1">Media Sosial</h4>
-                      <a href="https://instagram.com/tunasbinar.mlg" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-red-400 transition-colors text-sm">
-                        @tunasbinar.mlg (Instagram &amp; TikTok)
+                      <h4 className="font-bold text-gray-200 text-sm mb-1">Instagram</h4>
+                      <a href="https://instagram.com/tunasbinar.mlg" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-pink-400 transition-colors text-sm block">
+                        @tunasbinar.mlg
+                      </a>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start gap-4">
+                    <div className="w-11 h-11 bg-gray-800 rounded-full flex items-center justify-center shrink-0">
+                      <svg className="w-5 h-5 text-cyan-400" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 3 15.69a6.34 6.34 0 0 0 6.34 6.31 6.32 6.32 0 0 0 6.34-6.31V8.71a8.16 8.16 0 0 0 4.91 1.62V6.89a4.85 4.85 0 0 1-1-.2z"/>
+                      </svg>
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-gray-200 text-sm mb-1">TikTok</h4>
+                      <a href="https://tiktok.com/@tunasbinar.mlg" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-cyan-400 transition-colors text-sm block">
+                        @tunasbinar.mlg
                       </a>
                     </div>
                   </div>
