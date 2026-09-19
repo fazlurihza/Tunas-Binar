@@ -5,7 +5,7 @@ import Image from 'next/image';
 import {
   Phone, BookOpen, ToyBrick, Heart, MapPin, Sparkles,
   Clock, Users, Home as HomeIcon, CheckCircle2, Mail,
-  Car, Brain, Dumbbell
+  Brain, Dumbbell
 } from 'lucide-react';
 
 export default function Home() {
@@ -59,17 +59,6 @@ export default function Home() {
       subtitle: 'Pengembangan Diri',
       desc: 'Dilengkapi dengan outing class, art class, cooking class, dan study tour untuk memperluas kemampuan sosial anak.',
       tags: ['Art Class', 'Cooking Class', 'Study Tour'],
-    },
-    {
-      id: 5,
-      accentColor: '#64b5f6',
-      accentBg: 'bg-blue-400/15',
-      accentText: 'text-blue-300',
-      icon: Car,
-      title: 'Antar-Jemput',
-      subtitle: 'Layanan Transportasi',
-      desc: 'Layanan transportasi antar-jemput yang aman dan terpercaya untuk kenyamanan peserta didik dari dan ke lokasi terapi.',
-      tags: ['Aman', 'Terpercaya', 'Door to Door'],
     },
   ];
 
@@ -249,16 +238,16 @@ export default function Home() {
               Program Layanan Kami
             </h2>
             <p className="text-purple-200/80 text-base md:text-lg max-w-xl mx-auto">
-              Lima layanan komprehensif dirancang untuk mendukung tumbuh kembang optimal setiap anak.
+              Layanan komprehensif yang dirancang untuk mendukung tumbuh kembang optimal setiap anak.
             </p>
           </div>
 
-          {/* Cards Grid — 3 on top, 2 centered on bottom */}
-          <div className="flex flex-wrap justify-center gap-5">
+          {/* Cards Grid — 4 columns */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {services.map((svc) => (
               <div
                 key={svc.id}
-                className="w-full sm:w-[calc(50%-10px)] lg:w-[calc(33.333%-14px)] bg-white/[0.07] backdrop-blur-xl rounded-2xl border border-white/10 overflow-hidden flex flex-col shadow-xl transition-all duration-300 hover:bg-white/[0.11] hover:border-white/20 hover:-translate-y-1.5 group"
+                className="w-full bg-white/[0.07] backdrop-blur-xl rounded-2xl border border-white/10 overflow-hidden flex flex-col shadow-xl transition-all duration-300 hover:bg-white/[0.11] hover:border-white/20 hover:-translate-y-1.5 group"
               >
                 {/* Top accent line */}
                 <div
