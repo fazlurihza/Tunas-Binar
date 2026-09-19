@@ -15,50 +15,106 @@ export default function Home() {
 
 
 
-  const services = [
+  const [activeServiceTab, setActiveServiceTab] = React.useState<'key' | 'focus'>('key');
+
+  const keyServices = [
     {
       id: 1,
-      accentColor: '#e57373',
-      accentBg: 'bg-rose-500/15',
-      accentText: 'text-rose-300',
-      icon: Heart,
-      title: 'Terapi Perilaku',
-      subtitle: 'ABA & Behavioral',
-      desc: 'Pembentukan basic life skill, kemandirian, dan kemampuan interaksi sosial anak melalui pendekatan terstruktur berbasis ABA.',
-      tags: ['Life Skill', 'Interaksi Sosial', 'Kemandirian'],
+      accentColor: '#2dd4bf',
+      accentBg: 'bg-teal-400/15',
+      accentText: 'text-teal-300',
+      icon: Users,
+      title: 'Sistem Terapi One-on-One',
+      subtitle: 'Pendampingan Eksklusif',
+      desc: 'Satu anak didampingi satu terapis dengan pendekatan penuh kesabaran untuk membangun bonding dan kemajuan optimal.',
+      tags: ['1 Anak 1 Terapis', 'Personal', 'Bonding'],
     },
     {
       id: 2,
-      accentColor: '#4db6ac',
-      accentBg: 'bg-teal-400/15',
-      accentText: 'text-teal-300',
-      icon: ToyBrick,
-      title: 'Terapi Okupasi',
-      subtitle: 'Motorik & ADL',
-      desc: 'Membantu anak mengembangkan keterampilan motorik halus dan kemampuan aktivitas kehidupan sehari-hari (ADL) secara mandiri.',
-      tags: ['Motorik Halus', 'Koordinasi', 'ADL'],
+      accentColor: '#a78bfa',
+      accentBg: 'bg-purple-400/15',
+      accentText: 'text-purple-300',
+      icon: BookOpen,
+      title: 'Program Individual (IEP)',
+      subtitle: 'Kurikulum Terarah',
+      desc: 'Individualized Education Program dirancang khusus sesuai kebutuhan unik dan tahap tumbuh kembang anak.',
+      tags: ['IEP', 'Personalized', 'Terarah'],
     },
     {
       id: 3,
-      accentColor: '#ffb74d',
+      accentColor: '#fbbf24',
       accentBg: 'bg-amber-400/15',
       accentText: 'text-amber-300',
-      icon: Brain,
-      title: 'Sensori Motorik',
-      subtitle: 'Integrasi Sensorik',
-      desc: 'Terapi yang menstimulasi respons sensorik dan kemampuan motorik kasar anak agar lebih optimal dalam merespons lingkungan sekitar.',
-      tags: ['Sensorik', 'Motorik Kasar', 'Respons'],
+      icon: ToyBrick,
+      title: 'Media Belajar Lengkap & Interaktif',
+      subtitle: 'Stimulasi Menyenangkan',
+      desc: 'Didukung alat peraga edukatif dan media interaktif lengkap untuk memaksimalkan minat dan proses belajar anak.',
+      tags: ['Media Interaktif', 'Alat Peraga', 'Edukasi'],
     },
     {
       id: 4,
-      accentColor: '#ba68c8',
-      accentBg: 'bg-purple-400/15',
-      accentText: 'text-purple-300',
-      icon: Dumbbell,
-      title: 'Life Skill & Ekstra',
-      subtitle: 'Pengembangan Diri',
-      desc: 'Dilengkapi dengan outing class, art class, cooking class, dan study tour untuk memperluas kemampuan sosial anak.',
-      tags: ['Art Class', 'Cooking Class', 'Study Tour'],
+      accentColor: '#f87171',
+      accentBg: 'bg-rose-400/15',
+      accentText: 'text-rose-300',
+      icon: CheckCircle2,
+      title: 'Laporan Perkembangan Bulanan',
+      subtitle: 'Transparansi Progres',
+      desc: 'Laporan berkala setiap bulan yang transparan untuk memantau perkembangan perilaku, motorik, dan kemandirian.',
+      tags: ['Laporan Bulanan', 'Transparan', 'Terukur'],
+    },
+    {
+      id: 5,
+      accentColor: '#38bdf8',
+      accentBg: 'bg-sky-400/15',
+      accentText: 'text-sky-300',
+      icon: Sparkles,
+      title: 'Evaluasi & Monitoring Berkala',
+      subtitle: 'Pemantauan Berkelanjutan',
+      desc: 'Monitoring dan asesmen rutin oleh tim terapis untuk memastikan metode stimulasi selalu tepat sasaran.',
+      tags: ['Asesmen Rutin', 'Monitoring', 'Dinamis'],
+    },
+    {
+      id: 6,
+      accentColor: '#34d399',
+      accentBg: 'bg-emerald-400/15',
+      accentText: 'text-emerald-300',
+      icon: HomeIcon,
+      title: 'Suasana Terapi Nyaman dan Aman',
+      subtitle: 'Lingkungan Ramah Anak',
+      desc: 'Ruang terapi yang didesain hangat, aman, dan nyaman agar anak merasa senang, tenang, dan terlindungi.',
+      tags: ['Aman & Nyaman', 'Homey', 'Ramah Anak'],
+    },
+  ];
+
+  const focusCategories = [
+    {
+      title: 'Kemandirian & Adab',
+      badgeColor: 'bg-teal-400/20 text-teal-300 border-teal-400/30',
+      items: [
+        { name: 'Toilet Training', desc: 'BAK/BAB, istinja, mandi, dan gosok gigi' },
+        { name: 'Adab Kamar Mandi', desc: 'Sebelum masuk, saat di dalam, dan keluar kamar mandi' },
+        { name: 'Makan Mandiri & Adab Makan', desc: 'Persiapan makan, ketika makan, dan setelah makan' },
+        { name: 'Adab Belajar', desc: 'Pembiasaan sikap sebelum dan sesudah belajar' },
+      ],
+    },
+    {
+      title: 'Terapi & Perkembangan Fisik',
+      badgeColor: 'bg-purple-400/20 text-purple-300 border-purple-400/30',
+      items: [
+        { name: 'Terapi Perilaku', desc: 'Modifikasi perilaku & respons positif terarah' },
+        { name: 'Motorik Kasar', desc: 'Keseimbangan tubuh, koordinasi gerak, dan ketangkasan' },
+        { name: 'Motorik Halus', desc: 'Kekuatan jemari, koordinasi mata-tangan, & pra-menulis' },
+        { name: 'Fisioterapi Dasar', desc: 'Stimulasi fleksibilitas, postur, dan kekuatan fisik' },
+      ],
+    },
+    {
+      title: 'Akademik, Ibadah & Sosial',
+      badgeColor: 'bg-amber-400/20 text-amber-300 border-amber-400/30',
+      items: [
+        { name: 'Ibadah: Wudhu & Sholat', desc: 'Pengenalan dan pembiasaan tata cara wudhu & sholat' },
+        { name: 'Akademik Dasar', desc: 'Pengenalan kognitif dasar, pra-membaca, & berhitung' },
+        { name: 'Jalan-Jalan Sore', desc: 'Stimulasi sensorik lingkungan luar & interaksi sosial' },
+      ],
     },
   ];
 
@@ -220,8 +276,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── SISTEM LAYANAN SECTION (Carousel 5 cards) ── */}
-      <section id="layanan" className="snap-start min-h-screen w-full flex flex-col justify-center relative py-16 md:py-20 overflow-hidden">
+      {/* ── SISTEM LAYANAN SECTION (Key Services & Focus Program) ── */}
+      <section id="layanan" className="snap-start min-h-screen w-full flex flex-col justify-center relative py-14 md:py-18 overflow-hidden">
         <div
           className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat"
           style={{ backgroundImage: 'url("/bg_sistem_layanan.jpg")' }}
@@ -230,77 +286,191 @@ export default function Home() {
 
         <div className="relative z-10 w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Section Header */}
-          <div className="text-center mb-12">
+          <div className="text-center mb-6 md:mb-8">
             <span className="inline-block text-purple-300 font-bold tracking-wider uppercase text-xs mb-3 bg-white/10 backdrop-blur-sm px-4 py-1.5 rounded-full border border-white/20">
-              Sistem Layanan
+              Our Services &amp; Programs
             </span>
             <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-3">
-              Program Layanan Kami
+              Layanan &amp; Program Kami
             </h2>
-            <p className="text-purple-200/80 text-base md:text-lg max-w-xl mx-auto">
-              Layanan komprehensif yang dirancang untuk mendukung tumbuh kembang optimal setiap anak.
+            <p className="text-purple-200/80 text-sm md:text-base max-w-xl mx-auto">
+              Kurikulum terarah berbasis IEP, pendampingan one-on-one, serta pembiasaan adab dan kemandirian si kecil.
             </p>
           </div>
 
-          {/* Cards Grid — 4 columns */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            {services.map((svc) => (
-              <div
-                key={svc.id}
-                className="w-full bg-white/[0.07] backdrop-blur-xl rounded-2xl border border-white/10 overflow-hidden flex flex-col shadow-xl transition-all duration-300 hover:bg-white/[0.11] hover:border-white/20 hover:-translate-y-1.5 group"
+          {/* Tab Switcher */}
+          <div className="flex justify-center mb-6">
+            <div className="bg-white/10 backdrop-blur-md p-1 rounded-full border border-white/15 inline-flex gap-1">
+              <button
+                onClick={() => setActiveServiceTab('key')}
+                className={`px-4 sm:px-6 py-2 rounded-full text-xs sm:text-sm font-bold transition-all duration-300 ${
+                  activeServiceTab === 'key'
+                    ? 'bg-yellow-400 text-yellow-950 shadow-md scale-[1.02]'
+                    : 'text-white/80 hover:text-white hover:bg-white/10'
+                }`}
               >
-                {/* Top accent line */}
-                <div
-                  className="h-[3px] w-full shrink-0"
-                  style={{ background: `linear-gradient(90deg, ${svc.accentColor}, ${svc.accentColor}30)` }}
-                />
+                ✨ 6 Layanan Utama
+              </button>
+              <button
+                onClick={() => setActiveServiceTab('focus')}
+                className={`px-4 sm:px-6 py-2 rounded-full text-xs sm:text-sm font-bold transition-all duration-300 ${
+                  activeServiceTab === 'focus'
+                    ? 'bg-yellow-400 text-yellow-950 shadow-md scale-[1.02]'
+                    : 'text-white/80 hover:text-white hover:bg-white/10'
+                }`}
+              >
+                🎯 11 Focus Program &amp; Promo
+              </button>
+            </div>
+          </div>
 
-                {/* Card Content */}
-                <div className="p-6 flex flex-col flex-1">
-                  {/* Icon + Number */}
-                  <div className="flex items-start justify-between mb-5">
+          {/* TAB 1: 6 KEY SERVICES */}
+          {activeServiceTab === 'key' && (
+            <div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5">
+                {keyServices.map((svc) => (
+                  <div
+                    key={svc.id}
+                    className="w-full bg-white/[0.07] backdrop-blur-xl rounded-2xl border border-white/10 overflow-hidden flex flex-col shadow-xl transition-all duration-300 hover:bg-white/[0.11] hover:border-white/20 hover:-translate-y-1 group"
+                  >
+                    {/* Top accent line */}
                     <div
-                      className={`w-11 h-11 ${svc.accentBg} rounded-xl flex items-center justify-center shrink-0 border border-white/10`}
-                    >
-                      <svc.icon className={`w-5 h-5 ${svc.accentText}`} />
+                      className="h-[3px] w-full shrink-0"
+                      style={{ background: `linear-gradient(90deg, ${svc.accentColor}, ${svc.accentColor}30)` }}
+                    />
+
+                    {/* Card Content */}
+                    <div className="p-5 flex flex-col flex-1">
+                      {/* Icon + Number */}
+                      <div className="flex items-start justify-between mb-3">
+                        <div
+                          className={`w-10 h-10 ${svc.accentBg} rounded-xl flex items-center justify-center shrink-0 border border-white/10`}
+                        >
+                          <svc.icon className={`w-5 h-5 ${svc.accentText}`} />
+                        </div>
+                        <span className="text-white/[0.08] text-4xl font-black leading-none select-none tabular-nums group-hover:text-white/15 transition-colors">
+                          {String(svc.id).padStart(2, '0')}
+                        </span>
+                      </div>
+
+                      {/* Title block */}
+                      <p className={`text-[10px] font-bold uppercase tracking-[0.12em] ${svc.accentText} mb-1`}>
+                        {svc.subtitle}
+                      </p>
+                      <h3 className="text-white text-lg font-bold leading-snug mb-2">{svc.title}</h3>
+
+                      {/* Divider */}
+                      <div className="h-px w-full bg-white/[0.08] mb-2.5" />
+
+                      {/* Description */}
+                      <p className="text-white/60 text-xs leading-relaxed flex-1 mb-4">{svc.desc}</p>
+
+                      {/* Tags */}
+                      <div className="flex flex-wrap gap-1.5">
+                        {svc.tags.map((tag) => (
+                          <span
+                            key={tag}
+                            className="px-2 py-0.5 text-[11px] font-medium rounded-md border"
+                            style={{
+                              color: svc.accentColor,
+                              borderColor: `${svc.accentColor}35`,
+                              background: `${svc.accentColor}0D`,
+                            }}
+                          >
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
                     </div>
-                    <span className="text-white/[0.07] text-5xl font-black leading-none select-none tabular-nums group-hover:text-white/10 transition-colors">
-                      {String(svc.id).padStart(2, '0')}
-                    </span>
                   </div>
+                ))}
+              </div>
 
-                  {/* Title block */}
-                  <p className={`text-[11px] font-bold uppercase tracking-[0.12em] ${svc.accentText} mb-1`}>
-                    {svc.subtitle}
+              {/* Bottom Peek to Focus Program */}
+              <div className="mt-5 bg-white/[0.05] border border-white/10 rounded-2xl p-3.5 sm:p-4 flex flex-col sm:flex-row items-center justify-between gap-3 text-white">
+                <div className="flex items-center gap-3 text-center sm:text-left">
+                  <span className="text-2xl shrink-0">🎯</span>
+                  <p className="text-xs sm:text-sm text-purple-200">
+                    <strong className="text-white">Ingin tahu kurikulum harian si kecil?</strong> Kami juga memiliki 11 Focus Program (Toilet Training, Adab Makan, Ibadah, dll.) + Promo Peserta Didik Baru.
                   </p>
-                  <h3 className="text-white text-xl font-bold leading-snug mb-3">{svc.title}</h3>
+                </div>
+                <button
+                  onClick={() => setActiveServiceTab('focus')}
+                  className="text-xs font-bold text-yellow-300 hover:text-yellow-200 underline whitespace-nowrap shrink-0"
+                >
+                  Lihat Focus Program &amp; Promo →
+                </button>
+              </div>
+            </div>
+          )}
 
-                  {/* Divider */}
-                  <div className="h-px w-full bg-white/[0.08] mb-3" />
-
-                  {/* Description */}
-                  <p className="text-white/50 text-sm leading-relaxed flex-1 mb-5">{svc.desc}</p>
-
-                  {/* Tags */}
-                  <div className="flex flex-wrap gap-1.5">
-                    {svc.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="px-2.5 py-0.5 text-xs font-medium rounded-md border"
-                        style={{
-                          color: svc.accentColor,
-                          borderColor: `${svc.accentColor}35`,
-                          background: `${svc.accentColor}0D`,
-                        }}
-                      >
-                        {tag}
+          {/* TAB 2: 11 FOCUS PROGRAMS & PROMO */}
+          {activeServiceTab === 'focus' && (
+            <div className="space-y-4">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                {focusCategories.map((cat, idx) => (
+                  <div
+                    key={idx}
+                    className="bg-white/[0.07] backdrop-blur-xl rounded-2xl border border-white/10 p-5 flex flex-col shadow-xl"
+                  >
+                    <div className="flex items-center justify-between mb-3.5 pb-2 border-b border-white/10">
+                      <h3 className="text-white font-bold text-sm sm:text-base">{cat.title}</h3>
+                      <span className={`text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full border ${cat.badgeColor}`}>
+                        {cat.items.length} Program
                       </span>
-                    ))}
+                    </div>
+                    <div className="space-y-3 flex-1">
+                      {cat.items.map((item, i) => (
+                        <div key={i} className="flex items-start gap-2.5">
+                          <CheckCircle2 className="w-4 h-4 text-teal-400 shrink-0 mt-0.5" />
+                          <div>
+                            <h4 className="text-white text-xs sm:text-sm font-semibold leading-tight">{item.name}</h4>
+                            <p className="text-white/50 text-[11px] leading-relaxed mt-0.5">{item.desc}</p>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {/* Promo Banner from Brochure */}
+              <div className="bg-gradient-to-r from-yellow-400/20 via-yellow-400/10 to-white/5 border border-yellow-400/40 rounded-2xl p-4 sm:p-5 flex flex-col sm:flex-row items-center justify-between gap-4 shadow-xl">
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 bg-yellow-400 text-yellow-950 rounded-2xl flex items-center justify-center font-black text-xl shrink-0 shadow-lg shadow-yellow-500/20">
+                    %
+                  </div>
+                  <div>
+                    <div className="flex items-center gap-2">
+                      <span className="bg-yellow-400 text-yellow-950 text-[10px] font-black uppercase px-2 py-0.5 rounded-full">
+                        New Members Promo!
+                      </span>
+                      <span className="text-yellow-300 text-xs font-semibold">Pendaftaran Peserta Didik Baru</span>
+                    </div>
+                    <p className="text-white font-bold text-base sm:text-lg mt-0.5">
+                      Hanya <span className="text-yellow-400 font-extrabold text-xl">Rp 150.000</span> <span className="text-white/70 text-xs font-normal">/ 4 jam terapi</span>
+                    </p>
                   </div>
                 </div>
+                <div className="flex items-center gap-3 w-full sm:w-auto">
+                  <button
+                    onClick={() => setActiveServiceTab('key')}
+                    className="px-4 py-2.5 rounded-xl border border-white/20 text-white hover:bg-white/10 text-xs font-semibold transition-all"
+                  >
+                    ← Layanan Utama
+                  </button>
+                  <a
+                    href={FORM_LINK}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1 sm:flex-none text-center bg-yellow-400 hover:bg-yellow-300 text-yellow-950 px-5 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all shadow-lg hover:shadow-yellow-500/30 hover:-translate-y-0.5 whitespace-nowrap"
+                  >
+                    Daftar Promo Sekarang
+                  </a>
+                </div>
               </div>
-            ))}
-          </div>
+            </div>
+          )}
         </div>
       </section>
 
