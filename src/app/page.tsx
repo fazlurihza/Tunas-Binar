@@ -211,7 +211,7 @@ export default function Home() {
               <div className="grid sm:grid-cols-2 gap-5">
                 {[
                   { icon: Heart, bg: 'bg-red-100', color: 'text-red-500', fill: 'fill-red-100', title: 'Pendekatan Hangat', desc: 'Lingkungan yang aman dan penuh kasih sayang untuk setiap anak.' },
-                  { icon: Users, bg: 'bg-teal-100', color: 'text-teal-500', fill: '', title: 'Tim Terlatih', desc: 'Satu anak satu terapis dengan 100+ jam terapi per bulan.' },
+                  { icon: Users, bg: 'bg-teal-100', color: 'text-teal-500', fill: '', title: 'Tim Terlatih', desc: 'Satu anak, satu terapis dengan pendekatan penuh kesabaran untuk membangun bonding.' },
                   { icon: Sparkles, bg: 'bg-yellow-100', color: 'text-yellow-500', fill: '', title: 'Program Terstruktur', desc: 'Program IEP yang dipersonalisasi sesuai kebutuhan unik setiap anak.' },
                   { icon: CheckCircle2, bg: 'bg-purple-100', color: 'text-purple-500', fill: '', title: 'Perkembangan Terpantau', desc: 'Laporan perkembangan rutin yang transparan untuk orang tua.' },
                 ].map((item, i) => (
